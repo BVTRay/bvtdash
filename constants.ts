@@ -1,6 +1,23 @@
 import { TaskItem, TaskStatus } from './types';
 
 export const TASK_DATA: TaskItem[] = [
+  // 0. NEW: Project Incoming (Special Item)
+  {
+    id: 'NEW',
+    category: '待办',
+    projectTitle: '✨ 项目来了',
+    description: 'Create New Project',
+    statusLabel: '🟢 待填写',
+    statusType: TaskStatus.NORMAL,
+    steps: [
+      { label: '基本信息', status: 'current' },
+      { label: '签约信息', status: 'upcoming' },
+      { label: '发起审批', status: 'upcoming' },
+    ],
+    data: {
+      type: 'new_project_form'
+    }
+  },
   // 1. 立项阶段 (Initiation)
   {
     id: 'A',
@@ -171,9 +188,89 @@ export const TASK_DATA: TaskItem[] = [
   },
 ];
 
-export const CATEGORIES = [
-  '立项阶段',
-  '信息更新',
-  '启动建组',
-  '筹备阶段',
+
+export const FINANCE_DATA: TaskItem[] = [
+  {
+    id: 'FIN-001',
+    category: '合同管理',
+    projectTitle: '项目合同：X科技宣传片',
+    description: 'Contract Review',
+    statusLabel: '🔴 待法务审核',
+    statusType: TaskStatus.URGENT,
+    steps: [
+      { label: '合同拟定', status: 'completed' },
+      { label: '法务审核', status: 'current' },
+      { label: '盖章归档', status: 'upcoming' },
+    ],
+    data: {
+      type: 'contract_review',
+      amount: '¥850,000',
+      partyB: 'X Technology Co., Ltd.',
+      riskLevel: 'Medium'
+    }
+  },
+  {
+    id: 'FIN-002',
+    category: '采购管理',
+    projectTitle: '对外采购：C项目摄影器材',
+    description: 'Equipment Procurement',
+    statusLabel: '🟠 待支付',
+    statusType: TaskStatus.WARNING,
+    steps: [
+      { label: '需求申请', status: 'completed' },
+      { label: '询价比价', status: 'completed' },
+      { label: '采购支付', status: 'current' },
+      { label: '验收入库', status: 'upcoming' },
+    ],
+    data: {
+      type: 'procurement',
+      vendor: 'ShowTime Camera Rental',
+      items: ['ARRI Alexa Mini LF x2', 'Cooke Lens Set', 'Easyrig'],
+      total: '¥42,000',
+      urgency: 'High'
+    }
+  },
+  {
+    id: 'FIN-003',
+    category: '项目清算',
+    projectTitle: '项目清算：A项目《城市光影》',
+    description: 'Project Liquidation',
+    statusLabel: '🔵 决算审核',
+    statusType: TaskStatus.NORMAL,
+    steps: [
+      { label: '成本归集', status: 'completed' },
+      { label: '决算审核', status: 'current' },
+      { label: '尾款结算', status: 'upcoming' },
+      { label: '项目关闭', status: 'upcoming' },
+    ],
+    data: {
+      type: 'liquidation',
+      projectId: 'PROJ-2023-A01',
+      finalMargin: '22.5%',
+      variance: '-¥12,000'
+    }
+  },
+  {
+    id: 'FIN-004',
+    category: '报销管理',
+    projectTitle: '费用报销：差旅费 (Alice)',
+    description: 'Travel Reimbursement',
+    statusLabel: '🟢 待审批',
+    statusType: TaskStatus.NORMAL,
+    steps: [
+      { label: '提交单据', status: 'completed' },
+      { label: '部门审批', status: 'current' },
+      { label: '财务复核', status: 'upcoming' },
+      { label: '打款', status: 'upcoming' },
+    ],
+    data: {
+      type: 'reimbursement',
+      employee: 'Alice Wang',
+      department: 'Production Dept. B',
+      amount: '¥3,450',
+      category: 'Transportation & Accommodation'
+    }
+  },
 ];
+
+export const CATEGORIES = []; 
